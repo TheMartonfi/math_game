@@ -38,9 +38,9 @@ class Game
 
   def continue
     if self.player1.current_lives == 0
-      game_over(self.player2)
+      self.game_over(self.player2)
     elsif self.player2.current_lives == 0
-      game_over(self.player1)
+      self.game_over(self.player1)
     end
   end
 
@@ -50,7 +50,7 @@ class Game
   end
 
   def logic
-    correct_answer = question
+    correct_answer = self.question
     answer = self.current_player.get_answer.to_i
 
     self.validate_answer(correct_answer, answer)
