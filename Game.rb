@@ -36,17 +36,15 @@ class Game
     exit(0)
   end
 
-  def continue
+  def new_turn
     if self.player1.current_lives == 0
       self.game_over(self.player2)
     elsif self.player2.current_lives == 0
       self.game_over(self.player1)
+    else
+      puts "----- NEW TURN -----"
+      self.current_player == self.player1 ? self.current_player = self.player2 : self.current_player = self.player1
     end
-  end
-
-  def new_turn
-    puts "----- NEW TURN -----"
-    self.current_player == self.player1 ? self.current_player = self.player2 : self.current_player = self.player1
   end
 
   def logic
@@ -54,7 +52,6 @@ class Game
     answer = self.current_player.get_answer.to_i
 
     self.validate_answer(correct_answer, answer)
-    self.continue
     self.new_turn
   end
 end
